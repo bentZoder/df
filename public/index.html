@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julia Talking Head</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+      "talkinghead": "https://cdn.jsdelivr.net/gh/met4citizen/TalkingHead@1.7/modules/talkinghead.mjs"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>Julia 3D Talking Head</h1>
+      <p>Interact with Julia and hear her respond using Gemini AI.</p>
+    </header>
+
+    <main>
+      <section class="panel panel-left">
+        <div class="card">
+          <label for="prompt">Ask Julia anything:</label>
+          <textarea id="prompt" rows="5" placeholder="Type your question here..."></textarea>
+          <button id="askBtn" disabled>Ask Julia</button>
+          <div id="status" class="status">Audio is locked until you tap the unlock button.</div>
+          <div class="field-row">
+            <button id="unlockAudioBtn" class="secondary">Unlock Audio</button>
+            <button id="resetBtn" class="secondary">Reset</button>
+          </div>
+          <div class="response-block">
+            <h2>Last Response</h2>
+            <div id="responseText" class="response-text">No response yet.</div>
+            <div class="response-meta">
+              <span id="responseMood">Mood: neutral</span>
+              <span id="responseGesture">Gesture: none</span>
+            </div>
+          </div>
+          <div class="notes">
+            <strong>Note:</strong> Set <code>GEMINI_API_KEY</code> in <code>.env</code> and restart the server.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-right">
+        <div class="avatar-card">
+          <div id="avatar" class="avatar-canvas"></div>
+          <div class="notice">Julia is rendered fully in-browser with Three.js and TalkingHead.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
